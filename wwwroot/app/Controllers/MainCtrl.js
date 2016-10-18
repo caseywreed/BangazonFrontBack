@@ -11,8 +11,6 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         price: null
     }
 
-    $scope.editProduct = {}
-
     $scope.newCustomer = {
         firstName: "",
         lastName: ""
@@ -74,6 +72,17 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         AppFactory.deleteCustomerFromDatabase(customerId)
         .then(function () {
             $scope.getCustomers()
+        })
+    }
+
+    $scope.toggleEditCustomerMode = (customer) => {
+        $scope.editCustomer = customer
+    }
+
+    $scope.editCustomerCall = () => {
+        AppFactory.putCustomerToDatabase($scope.editCustomer)
+        .then(function () {
+            $scope.editCustomer = {}
         })
     }
 
