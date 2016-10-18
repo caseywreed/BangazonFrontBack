@@ -44,9 +44,15 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         })
     }
 
-    $scope.editProduct = (product) => {
+    $scope.toggleEditProductMode = (product) => {
         $scope.editProduct = product
-        console.log($scope.editProduct)
+    }
+
+    $scope.editProductCall = () => {
+        AppFactory.putProductToDatabase($scope.editProduct)
+        .then(function () {
+            $scope.editProduct = {}
+        })
     }
 
     // CUSTOMERS

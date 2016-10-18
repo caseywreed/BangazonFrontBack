@@ -143,7 +143,8 @@ app.factory("AppFactory", function ($q, $http) {
     postCustomerToDatabase,
     postOrderToDatabase,
     deleteProductFromDatabase,
-    deleteCustomerFromDatabase
+    deleteCustomerFromDatabase,
+    putProductToDatabase
 }
 
 })

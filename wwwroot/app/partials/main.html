@@ -5,6 +5,9 @@
         <input type="text" placeholder="description" ng-model="newProduct.description">
         <input type="text" placeholder="price" ng-model="newProduct.price">
         <button ng-click="createNewProduct()">Create Your Product</button>
+        <input type="text" placeholder="description" ng-model="editProduct.description">
+        <input type="text" placeholder="price" ng-model="editProduct.price">
+        <button ng-click="editProductCall()">Edit A Product</button>
     </div>
     <table>
         <tr>
@@ -17,7 +20,7 @@
             <td>${{product.price}}</td>
             <td>{{product.productId}}</td>
             <td><button ng-click="deleteProduct(product.productId)">Delete</button></td>
-            <td><button ng-click="editProduct(product)">Edit</button></td>
+            <td><button ng-click="toggleEditProductMode(product)">Edit</button></td>
         </tr>
     </table>
     <h3>Customers</h3>
