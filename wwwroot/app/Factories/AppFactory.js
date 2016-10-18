@@ -17,10 +17,38 @@ app.factory("AppFactory", function ($q, $http) {
         })
     }
 
+    let postProductToDatabase = (newProduct) => {
+        console.log("postProductToDatabase running")
+        return $q((resolve, reject) => {
+            $http.post(`http://localhost:5000/products`, JSON.stringify(newProduct))
+            .success((data) => {
+                resolve(data)
+                console.log(data)
+            })
+            .error((error) => {
+                reject(error)
+            })
+        })
+    }
+
     let getCustomersFromDatabase = () => {
         console.log("getCustomersFromDatabase running")
         return $q((resolve, reject) => {
             $http.get(`http://localhost:5000/customers`)
+            .success((data) => {
+                resolve(data)
+                console.log(data)
+            })
+            .error((error) => {
+                reject(error)
+            })
+        })
+    }
+
+    let postCustomerToDatabase = (newCustomer) => {
+        console.log("postCustomerToDatabase running")
+        return $q((resolve, reject) => {
+            $http.post(`http://localhost:5000/customers`, JSON.stringify(newCustomer))
             .success((data) => {
                 resolve(data)
                 console.log(data)
@@ -45,8 +73,22 @@ app.factory("AppFactory", function ($q, $http) {
         })
     }
 
+    let postOrderToDatabase = (newOrder) => {
+        console.log("postOrderToDatabase running")
+        return $q((resolve, reject) => {
+            $http.post(`http://localhost:5000/orders`, JSON.stringify(newOrder))
+            .success((data) => {
+                resolve(data)
+                console.log(data)
+            })
+            .error((error) => {
+                reject(error)
+            })
+        })
+    }
 
 
-   return {getProductsFromDatabase, getCustomersFromDatabase, getOrdersFromDatabase}
+
+   return {getProductsFromDatabase, getCustomersFromDatabase, getOrdersFromDatabase, postProductToDatabase, postCustomerToDatabase, postOrderToDatabase}
 
 })

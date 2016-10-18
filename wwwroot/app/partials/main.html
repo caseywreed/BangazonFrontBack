@@ -7,19 +7,35 @@
     <div>
         <input type="text" placeholder="description" ng-model="newProduct.description">
         <input type="text" placeholder="price" ng-model="newProduct.price">
-        <button ng-click="expression">Create Your Product</button>
+        <button ng-click="createNewProduct()">Create Your Product</button>
     </div>
-    <div ng-repeat="product in displayProducts">
-        <p>Description: {{product.description}}</p>
-        <p>Price: ${{product.price}}</p>
-        <p>ProductID: {{product.productId}}</p>
-    </div>
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Price</th>
+            <th>ProductID</th>
+        </tr>
+        <tr ng-repeat="product in displayProducts">
+            <td>{{product.description}}</td>
+            <td>${{product.price}}</td>
+            <td>{{product.productId}}</td>
+        </tr>
+</table>
     <h3>Customers</h3>
+    <div>
+        <input type="text" placeholder="First Name" ng-model="newCustomer.firstName">
+        <input type="text" placeholder="Last Name" ng-model="newCustomer.lastName">
+        <button ng-click="createNewCustomer()">Create a Customer</button>
+    </div>
     <div ng-repeat="customer in displayCustomers">
         <p>Name: {{customer.firstName}} {{customer.lastName}}</p>
         <p>CustomerID: {{customer.customerId}}</p>
     </div>
     <h3>Orders</h3>
+    <div>
+        <input type="text" placeholder="Customer ID" ng-model="newOrder.customerId">
+        <button ng-click="createNewOrder()">Create an Order</button>
+    </div>
     <div ng-repeat="order in displayOrders">
         <p>OrderID: {{order.orderId}}</p>
         <p>Date Created: {{order.dateCreated}}</p>

@@ -11,8 +11,20 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         price: null
     }
 
+    $scope.newCustomer = {
+        firstName: "",
+        lastName: ""
+    }
+
+    $scope.newOrder = {
+        customerId: null
+    }
+
+    // PRODUCTS
     $scope.createNewProduct = () => {
-        console.log($scope.newProduct)
+        AppFactory.postProductToDatabase($scope.newProduct)
+        $scope.newProduct.description = ""
+        $scope.newProduct.price = null
     }
 
     $scope.getProducts = () => {
@@ -22,6 +34,13 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         })
     }
 
+    // CUSTOMERS
+    $scope.createNewCustomer = () => {
+        AppFactory.postCustomerToDatabase($scope.newCustomer)
+        $scope.newCustomer.firstName = ""
+        $scope.newCustomer.lastName = ""
+    }
+
     $scope.getCustomers = () => {
         AppFactory.getCustomersFromDatabase()
         .then(function (data) {
@@ -29,11 +48,17 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         })
     }
 
+    // ORDERS
     $scope.getOrders = () => {
         AppFactory.getOrdersFromDatabase()
         .then(function (data) {
             $scope.displayOrders = data
         })
+    }
+
+    $scope.createNewOrder = () => {
+        AppFactory.postOrderToDatabase($scope.newOrder)
+        $scope.newOrder.customerId = null
     }
 
 })
