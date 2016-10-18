@@ -25,6 +25,7 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         AppFactory.postProductToDatabase($scope.newProduct)
         $scope.newProduct.description = ""
         $scope.newProduct.price = null
+        $scope.getProducts()
     }
 
     $scope.getProducts = () => {
@@ -34,11 +35,19 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         })
     }
 
+    $scope.deleteProduct = (productId) => {
+        AppFactory.deleteProductFromDatabase(productId)
+        .then(function () {
+            $scope.getProducts()
+        })
+    }
+
     // CUSTOMERS
     $scope.createNewCustomer = () => {
         AppFactory.postCustomerToDatabase($scope.newCustomer)
         $scope.newCustomer.firstName = ""
         $scope.newCustomer.lastName = ""
+        $scope.getCustomers()
     }
 
     $scope.getCustomers = () => {
@@ -59,6 +68,7 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
     $scope.createNewOrder = () => {
         AppFactory.postOrderToDatabase($scope.newOrder)
         $scope.newOrder.customerId = null
+        $scope.getOrders()
     }
 
 })

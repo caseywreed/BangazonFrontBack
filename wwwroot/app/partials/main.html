@@ -1,7 +1,6 @@
 <div ng-init="init()">
     <h3>Products</h3>
     <button ng-click="getProducts()">See Some Products</button>
-    <h2>Make a New Product</h2>
     <div>
         <input type="text" placeholder="description" ng-model="newProduct.description">
         <input type="text" placeholder="price" ng-model="newProduct.price">
@@ -17,11 +16,11 @@
             <td>{{product.description}}</td>
             <td>${{product.price}}</td>
             <td>{{product.productId}}</td>
+            <td><button ng-click="deleteProduct(product.productId)">Delete</button></td>
         </tr>
     </table>
     <h3>Customers</h3>
     <button ng-click="getCustomers()">See Some Customers</button>
-
     <div>
         <input type="text" placeholder="First Name" ng-model="newCustomer.firstName">
         <input type="text" placeholder="Last Name" ng-model="newCustomer.lastName">

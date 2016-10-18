@@ -3,6 +3,7 @@
 app.factory("AppFactory", function ($q, $http) {
 
 
+    // PRODUCTS
     let getProductsFromDatabase = () => {
         console.log("getProductsFromDatabase running")
         return $q((resolve, reject) => {
@@ -31,6 +32,22 @@ app.factory("AppFactory", function ($q, $http) {
         })
     }
 
+    let deleteProductFromDatabase = (productId) => {
+        console.log("deleteProductFromDatabase running")
+        return $q((resolve, reject) => {
+            $http.delete(`http://localhost:5000/products/${productId}`)
+            .success((data) => {
+                resolve(data)
+                console.log(data)
+            })
+            .error((error) => {
+                reject(error)
+            })
+        })
+    }
+
+
+    // CUSTOMERS
     let getCustomersFromDatabase = () => {
         console.log("getCustomersFromDatabase running")
         return $q((resolve, reject) => {
@@ -89,6 +106,14 @@ app.factory("AppFactory", function ($q, $http) {
 
 
 
-   return {getProductsFromDatabase, getCustomersFromDatabase, getOrdersFromDatabase, postProductToDatabase, postCustomerToDatabase, postOrderToDatabase}
+   return {
+    getProductsFromDatabase,
+    getCustomersFromDatabase,
+    getOrdersFromDatabase,
+    postProductToDatabase,
+    postCustomerToDatabase,
+    postOrderToDatabase,
+    deleteProductFromDatabase
+}
 
 })
