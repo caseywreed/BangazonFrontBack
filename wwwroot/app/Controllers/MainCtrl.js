@@ -11,6 +11,8 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         price: null
     }
 
+    $scope.editProduct = {}
+
     $scope.newCustomer = {
         firstName: "",
         lastName: ""
@@ -42,6 +44,11 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         })
     }
 
+    $scope.editProduct = (product) => {
+        $scope.editProduct = product
+        console.log($scope.editProduct)
+    }
+
     // CUSTOMERS
     $scope.createNewCustomer = () => {
         AppFactory.postCustomerToDatabase($scope.newCustomer)
@@ -54,6 +61,13 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         AppFactory.getCustomersFromDatabase()
         .then(function (data) {
             $scope.displayCustomers = data
+        })
+    }
+
+    $scope.deleteCustomer = (customerId) => {
+        AppFactory.deleteCustomerFromDatabase(customerId)
+        .then(function () {
+            $scope.getCustomers()
         })
     }
 

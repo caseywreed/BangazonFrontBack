@@ -17,6 +17,7 @@
             <td>${{product.price}}</td>
             <td>{{product.productId}}</td>
             <td><button ng-click="deleteProduct(product.productId)">Delete</button></td>
+            <td><button ng-click="editProduct(product)">Edit</button></td>
         </tr>
     </table>
     <h3>Customers</h3>
@@ -36,6 +37,7 @@
             <td>{{customer.firstName}}</td>
             <td>{{customer.lastName}}</td>
             <td>{{customer.customerId}}</td>
+            <td><button ng-click="deleteCustomer(customer.customerId)">Delete</button></td>
         </tr>
     </table>
     <h3>Orders</h3>
@@ -52,6 +54,7 @@
         <tr ng-repeat="order in displayOrders">
             <td>{{order.orderId}}</td>
             <td>{{order.dateCreated}}</td>
+            <td><button ng-click="deleteOrder(order.orderId)">Delete</button></td>
         </tr>
     </table>
 </div>
