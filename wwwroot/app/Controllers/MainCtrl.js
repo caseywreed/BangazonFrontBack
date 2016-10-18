@@ -11,8 +11,6 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         price: null
     }
 
-    $scope.editProduct = {}
-
     $scope.newCustomer = {
         firstName: "",
         lastName: ""
@@ -44,9 +42,15 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         })
     }
 
-    $scope.editProduct = (product) => {
+    $scope.toggleEditProductMode = (product) => {
         $scope.editProduct = product
-        console.log($scope.editProduct)
+    }
+
+    $scope.editProductCall = () => {
+        AppFactory.putProductToDatabase($scope.editProduct)
+        .then(function () {
+            $scope.editProduct = {}
+        })
     }
 
     // CUSTOMERS
@@ -71,6 +75,17 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         })
     }
 
+    $scope.toggleEditCustomerMode = (customer) => {
+        $scope.editCustomer = customer
+    }
+
+    $scope.editCustomerCall = () => {
+        AppFactory.putCustomerToDatabase($scope.editCustomer)
+        .then(function () {
+            $scope.editCustomer = {}
+        })
+    }
+
     // ORDERS
     $scope.getOrders = () => {
         AppFactory.getOrdersFromDatabase()
@@ -83,6 +98,17 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         AppFactory.postOrderToDatabase($scope.newOrder)
         $scope.newOrder.customerId = null
         $scope.getOrders()
+    }
+
+    $scope.toggleEditOrderMode = (order) => {
+        $scope.editOrder = order
+    }
+
+    $scope.editOrderCall = () => {
+        AppFactory.putOrderToDatabase($scope.editOrder)
+        .then(function () {
+            $scope.editOrder = {}
+        })
     }
 
 })

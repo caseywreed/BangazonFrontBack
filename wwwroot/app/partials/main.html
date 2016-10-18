@@ -1,10 +1,16 @@
 <div ng-init="init()">
+
+
+
     <h3>Products</h3>
     <button ng-click="getProducts()">See Some Products</button>
     <div>
         <input type="text" placeholder="description" ng-model="newProduct.description">
         <input type="text" placeholder="price" ng-model="newProduct.price">
         <button ng-click="createNewProduct()">Create Your Product</button>
+        <input type="text" placeholder="description" ng-model="editProduct.description">
+        <input type="text" placeholder="price" ng-model="editProduct.price">
+        <button ng-click="editProductCall()">Edit A Product</button>
     </div>
     <table>
         <tr>
@@ -17,15 +23,21 @@
             <td>${{product.price}}</td>
             <td>{{product.productId}}</td>
             <td><button ng-click="deleteProduct(product.productId)">Delete</button></td>
-            <td><button ng-click="editProduct(product)">Edit</button></td>
+            <td><button ng-click="toggleEditProductMode(product)">Edit</button></td>
         </tr>
     </table>
+
+
+
     <h3>Customers</h3>
     <button ng-click="getCustomers()">See Some Customers</button>
     <div>
         <input type="text" placeholder="First Name" ng-model="newCustomer.firstName">
         <input type="text" placeholder="Last Name" ng-model="newCustomer.lastName">
         <button ng-click="createNewCustomer()">Create a Customer</button>
+        <input type="text" placeholder="" ng-model="editCustomer.firstName">
+        <input type="text" placeholder="" ng-model="editCustomer.lastName">
+        <button ng-click="editCustomerCall()">Edit A Customer</button>
     </div>
     <table>
         <tr>
@@ -38,13 +50,19 @@
             <td>{{customer.lastName}}</td>
             <td>{{customer.customerId}}</td>
             <td><button ng-click="deleteCustomer(customer.customerId)">Delete</button></td>
+            <td><button ng-click="toggleEditCustomerMode(customer)">Edit</button></td>
         </tr>
     </table>
+
+
+
     <h3>Orders</h3>
     <button ng-click="getOrders()">See Some Orders</button>
     <div>
         <input type="text" placeholder="Customer ID" ng-model="newOrder.customerId">
         <button ng-click="createNewOrder()">Create an Order</button>
+        <input type="text" placeholder="" ng-model="editOrder.customerId">
+        <button ng-click="editOrderCall()">Edit an Order</button>
     </div>
     <table>
         <tr>
@@ -55,6 +73,10 @@
             <td>{{order.orderId}}</td>
             <td>{{order.dateCreated}}</td>
             <td><button ng-click="deleteOrder(order.orderId)">Delete</button></td>
+            <td><button ng-click="toggleEditOrderMode(order)">Edit</button></td>
         </tr>
     </table>
+
+
+
 </div>
