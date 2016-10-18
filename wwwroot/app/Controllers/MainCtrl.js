@@ -100,4 +100,15 @@ app.controller("MainCtrl", function ($scope, AppFactory) {
         $scope.getOrders()
     }
 
+    $scope.toggleEditOrderMode = (order) => {
+        $scope.editOrder = order
+    }
+
+    $scope.editOrderCall = () => {
+        AppFactory.putOrderToDatabase($scope.editOrder)
+        .then(function () {
+            $scope.editOrder = {}
+        })
+    }
+
 })

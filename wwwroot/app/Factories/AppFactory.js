@@ -147,6 +147,20 @@ app.factory("AppFactory", function ($q, $http) {
         })
     }
 
+    let putOrderToDatabase = (editedOrder) => {
+        console.log("putOrderToDatabase running")
+        return $q((resolve, reject) => {
+            $http.put(`http://localhost:5000/orders/${editedOrder.orderId}`, JSON.stringify(editedOrder))
+            .success((data) => {
+                resolve(data)
+                console.log(data)
+            })
+            .error((error) => {
+                reject(error)
+            })
+        })
+    }
+
 
 
    return {
@@ -159,7 +173,8 @@ app.factory("AppFactory", function ($q, $http) {
     deleteProductFromDatabase,
     deleteCustomerFromDatabase,
     putProductToDatabase,
-    putCustomerToDatabase
+    putCustomerToDatabase,
+    putOrderToDatabase
 }
 
 })

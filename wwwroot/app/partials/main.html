@@ -1,4 +1,7 @@
 <div ng-init="init()">
+
+
+
     <h3>Products</h3>
     <button ng-click="getProducts()">See Some Products</button>
     <div>
@@ -23,6 +26,9 @@
             <td><button ng-click="toggleEditProductMode(product)">Edit</button></td>
         </tr>
     </table>
+
+
+
     <h3>Customers</h3>
     <button ng-click="getCustomers()">See Some Customers</button>
     <div>
@@ -47,11 +53,16 @@
             <td><button ng-click="toggleEditCustomerMode(customer)">Edit</button></td>
         </tr>
     </table>
+
+
+
     <h3>Orders</h3>
     <button ng-click="getOrders()">See Some Orders</button>
     <div>
         <input type="text" placeholder="Customer ID" ng-model="newOrder.customerId">
         <button ng-click="createNewOrder()">Create an Order</button>
+        <input type="text" placeholder="" ng-model="editOrder.customerId">
+        <button ng-click="editOrderCall()">Edit an Order</button>
     </div>
     <table>
         <tr>
@@ -62,6 +73,10 @@
             <td>{{order.orderId}}</td>
             <td>{{order.dateCreated}}</td>
             <td><button ng-click="deleteOrder(order.orderId)">Delete</button></td>
+            <td><button ng-click="toggleEditOrderMode(order)">Edit</button></td>
         </tr>
     </table>
+
+
+
 </div>
