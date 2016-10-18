@@ -1,0 +1,27 @@
+<div ng-init="init()">
+    <button ng-click="getProducts()">See Some Products</button>
+    <button ng-click="getCustomers()">See Some Customers</button>
+    <button ng-click="getOrders()">See Some Orders</button>
+    <h3>Products</h3>
+    <h2>Make a New Product</h2>
+    <div>
+        <input type="text" placeholder="description" ng-model="newProduct.description">
+        <input type="text" placeholder="price" ng-model="newProduct.price">
+        <button ng-click="expression">Create Your Product</button>
+    </div>
+    <div ng-repeat="product in displayProducts">
+        <p>Description: {{product.description}}</p>
+        <p>Price: ${{product.price}}</p>
+        <p>ProductID: {{product.productId}}</p>
+    </div>
+    <h3>Customers</h3>
+    <div ng-repeat="customer in displayCustomers">
+        <p>Name: {{customer.firstName}} {{customer.lastName}}</p>
+        <p>CustomerID: {{customer.customerId}}</p>
+    </div>
+    <h3>Orders</h3>
+    <div ng-repeat="order in displayOrders">
+        <p>OrderID: {{order.orderId}}</p>
+        <p>Date Created: {{order.dateCreated}}</p>
+    </div>
+</div>
